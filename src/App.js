@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import CostSummary from './composition/CostSummary.js'
+import Features from './composition/Features.js'
 
 class App extends Component {
   constructor(props){
@@ -25,30 +27,20 @@ class App extends Component {
       }
     }
   }
-
-  updateFeature(feature, newValue) {
-    const selected = Object.assign({}, this.state.selected);
-    selected[feature] = newValue;
-    this.setState({
-      selected
-    });
-  }
+  
 
   render() {
-    const summary = Object.keys(this.state.selected)
-          .map(key => <div className="summary__option" key={key}>
-            <div className="summary__option__label">{key}  </div>
-            <div className="summary__option__value">{this.state.selected[key].name}</div>
-            <div className="summary__option__cost">
-              { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
-                  .format(this.state.selected[key].cost) }
-            </div>
-        </div>)
+    const updateFeature = (feature, newValue) => {
+      const selected = Object.assign({}, this.state.selected);
+      selected[feature] = newValue;
+      this.setState({
+        selected
+      });
+    }
+      
+   
 
-    const total = Object.keys(this.state.selected)
-          .reduce((acc, curr) => acc + this.state.selected[curr].cost, 0);    
-
-
+/*
     const features = Object.keys(this.props.features)
           .map(key => {
             const options = this.props.features[key].map((item, index) => {
@@ -71,8 +63,11 @@ class App extends Component {
                 { options }
               </ul>
             </div>
-          });      
-
+          });   
+          
+          */
+        
+    
     return (
       <div className="App">
         <header>
@@ -83,18 +78,19 @@ class App extends Component {
         <main>
           <section className="main__form">
             <h3>TECH SPECS AND CUSTOMIZATIONS</h3>
-            { features }
+            <Features 
+            features={this.props.features}
+            options = {this.props.features}
+            selected={this.state.selected}
+            onClick={updateFeature}
+            />
+
           </section>
           <section className="main__summary">
-            <h3>NEW GREENLEAF 2018</h3>
-            {summary}
-            <div className="summary__total">
-              <div className="summary__total__label">Your Price: </div>
-              <div className="summary__total__value">
-              { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
-                  .format(total) }
-              </div>
-            </div>
+            <CostSummary 
+            summary={this.state.selected}
+            total={this.state.selected.cost}
+            />
           </section>
         </main>
       </div>
