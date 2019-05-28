@@ -27,17 +27,17 @@ class App extends Component {
       }
     }
   }
+  updateFeature = (feature, newValue) => {
+    const selected = Object.assign({}, this.state.selected);
+    selected[feature] = newValue;
+    this.setState({
+      selected
+    });
+  }
   
 
   render() {
-    const updateFeature = (feature, newValue) => {
-      const selected = Object.assign({}, this.state.selected);
-      selected[feature] = newValue;
-      this.setState({
-        selected
-      });
-    }
-      
+    
    
 
 /*
@@ -82,9 +82,9 @@ class App extends Component {
             features={this.props.features}
             options = {this.props.features}
             selected={this.state.selected}
-            onClick={updateFeature}
+            updateFeature={this.updateFeature}
             />
-
+            
           </section>
           <section className="main__summary">
             <CostSummary 
