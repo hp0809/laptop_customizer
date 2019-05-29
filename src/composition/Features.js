@@ -10,18 +10,18 @@ class Features extends React.Component {
               const selectedClass = item.name === this.props.selected[key].name ? 'feature__selected' : '';
               const featureClass = 'feature__option ' + selectedClass;
               return <ListItem 
-              updateFeature={this.props.updateFeature}
+              onClick={this.props.updateFeature}
               featureClass= {featureClass}
               index={index}
-              key={this.props.features}
-              item = {this.props.selected[key].name}
-              cost= {this.props.selected[key].cost}
+              key={`${key}`}
+              item = {item.name}
+              cost= {item.cost}
               />
           });
 
           return <div className="feature" key={key}>
             <div className="feature__name">{key}</div>
-            <ul className="feature__list">
+            <ul className="feature__list" >
               { options }
             </ul>
           </div>
