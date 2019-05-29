@@ -1,4 +1,5 @@
 import React from 'react';
+import ListItem from './ListItem.js'
 
 class Features extends React.Component {
   render() {
@@ -8,14 +9,14 @@ class Features extends React.Component {
             const options = this.props.features[key].map((item, index) => {
               const selectedClass = item.name === this.props.selected[key].name ? 'feature__selected' : '';
               const featureClass = 'feature__option ' + selectedClass;
-              return <li key={index} className="feature__item">
-                <div className={featureClass}
-                  onClick={() => this.props.updateFeature(key,item)}>
-                  { item.name }
-                  ({ new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
-                    .format(item.cost) })
-              </div>
-            </li>
+              return <ListItem 
+              updateFeature={this.props.updateFeature}
+              featureClass= {featureClass}
+              index={index}
+              key={this.props.features}
+              item = {this.props.selected[key].name}
+              cost= {this.props.selected[key].cost}
+              />
           });
 
           return <div className="feature" key={key}>
