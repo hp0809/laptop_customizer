@@ -9,14 +9,16 @@ class Features extends React.Component {
             const options = this.props.features[key].map((item, index) => {
               const selectedClass = item.name === this.props.selected[key].name ? 'feature__selected' : '';
               const featureClass = 'feature__option ' + selectedClass;
-              return <ListItem 
-              onClick={this.props.updateFeature}
+              return (
+              <ListItem 
+              updateFeature={this.props.updateFeature}
               featureClass= {featureClass}
-              index={index}
-              key={`${key}`}
+              index={`${index}`}
+              key={`${index}`}
               item = {item.name}
               cost= {item.cost}
               />
+              )
           });
 
           return <div className="feature" key={key}>

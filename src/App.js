@@ -58,7 +58,6 @@ class App extends Component {
           </section>
           <section className="main__summary">
             <CostSummary 
-            key={this.state.selected}
             summary={this.state.selected}
             total={this.state.selected.cost}
             />
