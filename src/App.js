@@ -33,7 +33,11 @@ class App extends Component {
     this.setState({
       selected
     });
+    console.log(this.state.selected)
   }
+ 
+  
+
   
 
   render() {
@@ -66,6 +70,7 @@ class App extends Component {
       </div>
     );
   }
+  
 }
 
 export default App;  

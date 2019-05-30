@@ -2,16 +2,16 @@ import React from 'react';
 
 class ListItem extends React.Component {
     render() {
-        const key = this.props.indexKey;
+        const key = this.props.index;
         const item = this.props.item; 
-        
+        const cost = this.props.cost;
         return(
-            <li key = {this.props.indexKey} className="feature__item">
+            <li key = {this.props.index} className="feature__item">
                 <div className={this.props.featureClass}
                   onClick={e => this.props.updateFeature(key, item)}>
-                  { this.props.item}
+                  { this.props.item.name}
                   ({ new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
-                    .format(this.props.cost) })
+                    .format(cost) })
               </div>
             </li>
         )

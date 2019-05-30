@@ -10,15 +10,16 @@ class Features extends React.Component {
               const selectedClass = item.name === this.props.selected[key].name ? 'feature__selected' : '';
               const featureClass = 'feature__option ' + selectedClass;
               return (
-              <ListItem 
-              updateFeature={this.props.updateFeature}
-              featureClass= {featureClass}
-              index={`${index}`}
-              key={`${index}`}
-              item = {item.name}
-              cost= {item.cost}
-              />
+                <ListItem 
+                  updateFeature={this.props.updateFeature}
+                  featureClass= {featureClass}
+                  index={`${index}`}
+                  key={`${index}`}
+                  item = {item}
+                  cost= {item.cost}
+                />
               )
+              
           });
 
           return <div className="feature" key={key}>
@@ -28,6 +29,7 @@ class Features extends React.Component {
             </ul>
           </div>
           }); 
+          
   return features
   }
 }

@@ -13,9 +13,9 @@ class CostSummary extends React.Component {
             </div>
         </div>)
         
+        
     const total = Object.keys(this.props.summary)
           .reduce((acc, curr) => acc + this.props.summary[curr].cost, 0);
-
         return (
             <>
             <h3>NEW GREENLEAF 2018</h3>
