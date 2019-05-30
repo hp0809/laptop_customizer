@@ -33,7 +33,6 @@ class App extends Component {
     this.setState({
       selected
     });
-    console.log(this.state.selected)
   }
  
   
