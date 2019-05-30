@@ -1,21 +1,17 @@
 import React from 'react';
+import SummaryTotal from './SummaryTotal';
 
 class CostSummary extends React.Component {
 
     render() {
-        const summary = Object.keys(this.props.summary)
-          .map(key => <div className="summary__option" key={this.props.summary[key]}>
-            <div className="summary__option__label">{key}  </div>
-            <div className="summary__option__value">{this.props.summary[key].name}</div>
-            <div className="summary__option__cost">
-              { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
-                  .format(this.props.summary[key].cost) }
-            </div>
-        </div>)
-
-    const total = Object.keys(this.props.summary)
-          .reduce((acc, curr) => acc + this.props.summary[curr].cost, 0);
-
+        const summary = 
+            <SummaryTotal 
+                summary={this.props.summary}
+                key={this.props.summary}/>
+                
+        const total = Object.keys(this.props.summary)
+            .reduce((acc, curr) => acc + this.props.summary[curr].cost, 0);
+      
         return (
             <>
             <h3>NEW GREENLEAF 2018</h3>
